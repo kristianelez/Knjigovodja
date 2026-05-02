@@ -3,10 +3,18 @@ import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Clock } from "lucide-react";
 import { blogPosts } from "@/data/posts";
+import { useState } from "react";
+
+const ALL = "Sve teme";
 
 export default function BlogIndex() {
   // Extract unique categories
   const categories = Array.from(new Set(blogPosts.map(post => post.category)));
+  const [activeCategory, setActiveCategory] = useState<string>(ALL);
+
+  const filteredPosts = activeCategory === ALL
+    ? blogPosts
+    : blogPosts.filter(post => post.category === activeCategory);
 
   return (
     <div className="pt-32 pb-24 bg-gray-50 min-h-screen">
@@ -24,22 +32,37 @@ export default function BlogIndex() {
               Budite u toku sa najnovijim poreznim izmjenama, zakonima i savjetima za optimizaciju vašeg poslovanja.
             </p>
             
-            {/* Visual Categories */}
+            {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-2">
-              <span className="px-4 py-2 bg-primary text-white text-sm font-medium rounded-full cursor-pointer">
-                Sve teme
-              </span>
+              <button
+                onClick={() => setActiveCategory(ALL)}
+                className={`px-4 py-2 text-sm font-medium rounded-full cursor-pointer transition-colors border ${
+                  activeCategory === ALL
+                    ? "bg-primary text-white border-primary"
+                    : "bg-white text-gray-600 hover:text-primary border-gray-200"
+                }`}
+              >
+                {ALL}
+              </button>
               {categories.map((cat, i) => (
-                <span key={i} className="px-4 py-2 bg-white text-gray-600 hover:text-primary border border-gray-200 text-sm font-medium rounded-full cursor-pointer transition-colors">
+                <button
+                  key={i}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 text-sm font-medium rounded-full cursor-pointer transition-colors border ${
+                    activeCategory === cat
+                      ? "bg-primary text-white border-primary"
+                      : "bg-white text-gray-600 hover:text-primary border-gray-200"
+                  }`}
+                >
                   {cat}
-                </span>
+                </button>
               ))}
             </div>
           </motion.div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {filteredPosts.map((post, index) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 20 }}
