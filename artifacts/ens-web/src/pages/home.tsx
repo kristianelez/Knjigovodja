@@ -195,10 +195,9 @@ export default function Home() {
       <section className="py-20 bg-gray-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
             {[
-              { number: "15+", label: "Godina iskustva" },
-              { number: "350+", label: "Zadovoljnih klijenata" },
+              { number: "50+", label: "Zadovoljnih klijenata" },
               { number: "100%", label: "Tačnost i preciznost" },
               { number: "24/7", label: "Podrška klijentima" }
             ].map((stat, i) => (
