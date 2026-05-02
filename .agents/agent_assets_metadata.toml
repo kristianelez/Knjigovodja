@@ -1,0 +1,68 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ocGGaIvSjv3yk_HylaJhO"
+uri = "file://artifacts/ens-web/src/assets/images/hero.png"
+type = "image"
+title = "Accounting firm hero background"
+
+[[generated]]
+id = "mxHFJ_gT-1I59ipW-Pajv"
+uri = "file://artifacts/ens-web/src/assets/images/blog-1.png"
+type = "image"
+title = "Tax accounting abstract"
+
+[[generated]]
+id = "sjc64hgDZX7ehrF7AM2us"
+uri = "file://artifacts/ens-web/src/assets/images/blog-2.png"
+type = "image"
+title = "Corporate finance abstract"
+
+[[generated]]
+id = "fTaPO9mDmZQEubshqLr8T"
+uri = "file://artifacts/ens-web/src/assets/images/blog-3.png"
+type = "image"
+title = "Payroll and HR abstract"
+
+[[generated]]
+id = "MIK-pdll68trv-4Bg5RnK"
+uri = "file://artifacts/ens-web/src/assets/images/blog-4.png"
+type = "image"
+title = "Financial consulting abstract"
+
+[[generated]]
+id = "LL1j5-EqkPR-HqQMYh9VC"
+uri = "file://artifacts/ens-web/src/assets/images/blog-5.png"
+type = "image"
+title = "Salary and compensation abstract"
+
+[[generated]]
+id = "YfJDoVbZEf_bjRCFPRjAu"
+uri = "file://artifacts/ens-web/src/assets/images/blog-6.png"
+type = "image"
+title = "Company incorporation abstract"
+
+[[generated]]
+id = "XkEbBZ5VqvmvBhKdIS3m9"
+uri = "file://artifacts/ens-web/src/assets/images/blog-7.png"
+type = "image"
+title = "Digital fiscal operations abstract"
+
+[[generated]]
+id = "d9hAt463idI-amtdcH_uq"
+uri = "file://artifacts/ens-web/src/assets/images/blog-8.png"
+type = "image"
+title = "Small business tax relief abstract"
+
+[[generated]]
+id = "JzRaCXf55aWQc5zKFlNNM"
+uri = "file://artifacts/ens-web/src/assets/images/blog-9.png"
+type = "image"
+title = "Bookkeeping vs accounting abstract"
+
+[[generated]]
+id = "sz5xKznRj5ZBQGczzKr20"
+uri = "file://artifacts/ens-web/src/assets/images/blog-10.png"
+type = "image"
+title = "Financial statements abstract"
