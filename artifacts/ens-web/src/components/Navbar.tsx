@@ -26,8 +26,8 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md ${
+        scrolled ? "shadow-sm py-3" : "py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -35,7 +35,7 @@ export function Navbar() {
           <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
             E
           </div>
-          <span className={`font-bold text-xl tracking-tight transition-colors ${scrolled || location !== '/' ? 'text-gray-900' : 'text-gray-900 md:text-white'}`}>
+          <span className="font-bold text-xl tracking-tight text-gray-900">
             ENS d.o.o.
           </span>
         </Link>
@@ -47,11 +47,7 @@ export function Navbar() {
               key={link.path}
               href={link.path}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location === link.path
-                  ? "text-primary"
-                  : scrolled || location !== '/'
-                  ? "text-gray-600"
-                  : "text-white/90 hover:text-white"
+                location === link.path ? "text-primary" : "text-gray-700"
               }`}
             >
               {link.name}
@@ -66,7 +62,7 @@ export function Navbar() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={scrolled || location !== '/' ? 'text-gray-900' : 'text-gray-900 md:text-white'}>
+              <Button variant="ghost" size="icon" className="text-gray-900">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Otvori meni</span>
               </Button>
