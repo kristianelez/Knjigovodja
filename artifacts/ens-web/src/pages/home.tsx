@@ -216,34 +216,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* References */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Šta kažu naši klijenti</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Naše reference</h2>
             <p className="text-gray-600 text-lg">
-              Povjerenje se gradi godinama. Ponosni smo na dugoročne saradnje sa našim klijentima.
+              Povjerenje se gradi godinama. Ponosni smo na saradnju sa renomiranim kompanijama.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
-              {
-                text: "Od kako smo prepustili računovodstvo ENS-u, poslovanje nam je znatno olakšano. Uvijek su dostupni za savjet i nikada ne kasne sa prijavama.",
-                author: "Mirza K.",
-                company: "IT Solutions d.o.o."
-              },
-              {
-                text: "Stručnost i profesionalnost na najvišem nivou. Posebno cijenim njihov proaktivan pristup kod poreznog savjetovanja.",
-                author: "Amina S.",
-                company: "Design Studio"
-              },
-              {
-                text: "Najbolja odluka koju smo donijeli pri osnivanju firme je angažovanje agencije ENS. Vode nas kroz sve zakonske procedure bez stresa.",
-                author: "Kenan H.",
-                company: "Logistika d.o.o."
-              }
-            ].map((testimonial, i) => (
+              { name: "Rotometal Alati", tag: "Industrija" },
+              { name: "Greentime", tag: "Eko rješenja" },
+              { name: "Palfinger", tag: "Hidraulika" }
+            ].map((client, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -252,14 +240,12 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <Card className="h-full border-none shadow-md bg-white">
-                  <CardContent className="p-8 relative">
-                    <div className="text-6xl text-gray-200 absolute top-4 right-6 font-serif leading-none">"</div>
-                    <p className="text-gray-700 leading-relaxed mb-6 relative z-10 italic">
-                      "{testimonial.text}"
-                    </p>
-                    <div>
-                      <div className="font-bold text-gray-900">{testimonial.author}</div>
-                      <div className="text-sm text-primary font-medium">{testimonial.company}</div>
+                  <CardContent className="p-10 flex flex-col items-center justify-center text-center min-h-[180px]">
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">
+                      {client.name}
+                    </div>
+                    <div className="text-sm text-primary font-medium uppercase tracking-wider">
+                      {client.tag}
                     </div>
                   </CardContent>
                 </Card>
