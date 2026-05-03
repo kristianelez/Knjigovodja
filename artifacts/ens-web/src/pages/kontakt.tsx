@@ -1,3 +1,4 @@
+import { SEO } from "@/components/SEO";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -24,6 +25,26 @@ const formSchema = z.object({
   poruka: z.string().min(10, { message: "Poruka mora imati barem 10 karaktera." }),
 });
 
+const kontaktJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt - ENS d.o.o.",
+  "url": "https://ens.ba/kontakt",
+  "mainEntity": {
+    "@type": "AccountingService",
+    "name": "ENS d.o.o.",
+    "telephone": "+387 33 000 000",
+    "email": "info@ens.ba",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lužansko polje 7",
+      "addressLocality": "Sarajevo",
+      "postalCode": "71000",
+      "addressCountry": "BA"
+    }
+  }
+};
+
 export default function Kontakt() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +69,13 @@ export default function Kontakt() {
 
   return (
     <div className="pt-32 pb-20 bg-white min-h-screen">
+      <SEO
+        title="Kontakt - ENS d.o.o. | Knjigovođa Sarajevo, Lužansko polje 7"
+        description="Kontaktirajte ENS d.o.o. za knjigovodstvene usluge u Sarajevu. Adresa: Lužansko polje 7, Sarajevo. Besplatna prva konsultacija."
+        path="/kontakt"
+        keywords="kontakt knjigovođa sarajevo, ENS doo kontakt, knjigovodstvena agencija lužansko polje"
+        jsonLd={kontaktJsonLd}
+      />
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

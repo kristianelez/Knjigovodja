@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -56,9 +57,45 @@ const allServices = [
   }
 ];
 
+const uslugeJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Knjigovodstvene i računovodstvene usluge",
+  "provider": {
+    "@type": "AccountingService",
+    "name": "ENS d.o.o.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lužansko polje 7",
+      "addressLocality": "Sarajevo",
+      "addressCountry": "BA"
+    }
+  },
+  "areaServed": { "@type": "Country", "name": "Bosna i Hercegovina" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usluge ENS d.o.o.",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vođenje poslovnih knjiga" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Obračun plata i doprinosa" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Porezno savjetovanje" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Osnivanje firmi i obrta" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PDV evidencije i prijave" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online knjigovodstvo" } }
+    ]
+  }
+};
+
 export default function Usluge() {
   return (
     <div className="pt-24 pb-20 bg-gray-50 min-h-screen">
+      <SEO
+        title="Usluge knjigovodstva u Sarajevu - ENS d.o.o."
+        description="Kompletne knjigovodstvene usluge u Sarajevu: vođenje poslovnih knjiga, obračun plata, PDV, porezno savjetovanje, osnivanje d.o.o. i obrta u FBiH."
+        path="/usluge"
+        keywords="usluge knjigovodstva sarajevo, vođenje poslovnih knjiga, obračun plata FBiH, PDV prijava, osnivanje doo sarajevo"
+        jsonLd={uslugeJsonLd}
+      />
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 pt-8">

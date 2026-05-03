@@ -13,6 +13,47 @@ import {
   ArrowRight
 } from "lucide-react";
 import heroImg from "@/assets/images/hero.png";
+import { SEO } from "@/components/SEO";
+
+const homeJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Koliko košta knjigovodstvo u Sarajevu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cijena knjigovodstva u Sarajevu zavisi od oblika poslovanja, broja transakcija i broja zaposlenih. Za male d.o.o. mjesečna naknada obično počinje od 150 KM, a za obrte od 80 KM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Da li ENS d.o.o. radi za firme van Sarajeva?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Da. Pružamo online knjigovodstvene usluge za klijente iz cijele Bosne i Hercegovine uz potpuno digitalnu razmjenu dokumenata."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Pomažete li kod osnivanja firme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Da, vodimo cijeli proces osnivanja d.o.o. ili obrta u Federaciji BiH – od pripreme dokumentacije do prijave u poreznoj upravi."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Početna", "item": "https://ens.ba/" }
+    ]
+  }
+];
 
 const services = [
   {
@@ -50,6 +91,13 @@ const services = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Knjigovođa Sarajevo - ENS d.o.o. | Knjigovodstvo, plate, porezi"
+        description="Profesionalna knjigovodstvena agencija u Sarajevu. Vođenje poslovnih knjiga, obračun plata, PDV, porezno savjetovanje i osnivanje firmi u FBiH."
+        path="/"
+        keywords="knjigovođa sarajevo, knjigovodstvo sarajevo, računovodstvo sarajevo, knjigovodstvena agencija, ENS doo"
+        jsonLd={homeJsonLd}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         {/* Background Image with Overlay */}

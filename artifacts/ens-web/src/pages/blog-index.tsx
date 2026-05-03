@@ -4,8 +4,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Clock } from "lucide-react";
 import { blogPosts } from "@/data/posts";
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 
 const ALL = "Sve teme";
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "ENS d.o.o. Blog - Knjigovodstvo i porezi u BiH",
+  "url": "https://ens.ba/blog",
+  "inLanguage": "bs-BA",
+  "publisher": { "@type": "Organization", "name": "ENS d.o.o." },
+  "blogPost": blogPosts.map(p => ({
+    "@type": "BlogPosting",
+    "headline": p.title,
+    "url": `https://ens.ba/blog/${p.slug}`,
+    "datePublished": p.date,
+    "author": { "@type": "Person", "name": p.author }
+  }))
+};
 
 export default function BlogIndex() {
   // Extract unique categories
@@ -18,6 +35,13 @@ export default function BlogIndex() {
 
   return (
     <div className="pt-32 pb-24 bg-gray-50 min-h-screen">
+      <SEO
+        title="Blog - Knjigovodstvo, porezi i poslovanje u BiH | ENS d.o.o."
+        description="Stručni savjeti o knjigovodstvu, porezima, obračunu plata i osnivanju firmi u Bosni i Hercegovini. Aktuelne promjene zakona i praktični vodiči."
+        path="/blog"
+        keywords="blog knjigovodstvo, porezi BiH, obračun plata, osnivanje firme, savjeti za poduzetnike"
+        jsonLd={blogJsonLd}
+      />
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div

@@ -2,6 +2,7 @@ import { useParams, Link } from "wouter";
 import { ArrowLeft, Clock, User, Calendar } from "lucide-react";
 import { blogPosts } from "@/data/posts";
 import NotFound from "./not-found";
+import { SEO, SITE } from "@/components/SEO";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -11,11 +12,53 @@ export default function BlogPost() {
     return <NotFound />;
   }
 
+  const postUrl = `${SITE.url}/blog/${post.slug}`;
+  const articleJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": `${SITE.url}${post.image}`,
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "author": { "@type": "Person", "name": post.author },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ENS d.o.o.",
+        "logo": { "@type": "ImageObject", "url": `${SITE.url}/favicon.svg` }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl },
+      "articleSection": post.category,
+      "inLanguage": "bs-BA"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Početna", "item": SITE.url + "/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": SITE.url + "/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": postUrl }
+      ]
+    }
+  ];
+
   // Format content paragraphs
   const paragraphs = post.content.split('\n\n').filter(p => p.trim() !== '');
 
   return (
     <article className="pt-24 pb-20 bg-white min-h-screen">
+      <SEO
+        title={`${post.title} | ENS d.o.o. Blog`}
+        description={post.excerpt}
+        path={`/blog/${post.slug}`}
+        image={`${SITE.url}${post.image}`}
+        type="article"
+        keywords={`${post.category.toLowerCase()}, knjigovodstvo BiH, ${post.title.toLowerCase()}`}
+        publishedTime={post.date}
+        author={post.author}
+        jsonLd={articleJsonLd}
+      />
       {/* Hero Image Header */}
       <div className="w-full h-[40vh] md:h-[50vh] relative">
         <img 
