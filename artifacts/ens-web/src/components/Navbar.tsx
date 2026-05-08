@@ -31,13 +31,12 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl group-hover:scale-105 transition-transform">
-            E
-          </div>
-          <span className="font-bold text-xl tracking-tight text-gray-900">
-            ENS d.o.o.
-          </span>
+        <Link href="/" className="flex items-center group">
+          <img
+            src="/logo.png"
+            alt="ENS računovodstvo i consulting d.o.o."
+            className="h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+          />
         </Link>
 
         {/* Desktop Nav */}

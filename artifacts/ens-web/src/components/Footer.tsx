@@ -9,13 +9,12 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                E
-              </div>
-              <span className="font-bold text-xl tracking-tight text-white">
-                ENS d.o.o.
-              </span>
+            <div className="mb-6">
+              <img
+                src="/logo-transparent.png"
+                alt="ENS računovodstvo i consulting d.o.o."
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-sm leading-relaxed max-w-xs text-gray-400">
               Pouzdano knjigovodstvo za mala i srednja preduzeća. Vaš partner za stabilan rast i finansijsku sigurnost.
