@@ -22,9 +22,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
     return NextResponse.json(
-      { error: "Redis not configured — set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in Vercel env vars" },
+      { error: "Redis not configured — connect Upstash for Redis to this project in Vercel Storage" },
       { status: 500 }
     );
   }
@@ -42,8 +42,8 @@ export async function POST(request: NextRequest) {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { Redis } = require("@upstash/redis") as typeof import("@upstash/redis");
   const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    url: process.env.KV_REST_API_URL!,
+    token: process.env.KV_REST_API_TOKEN!,
   });
   await redis.set(REDIS_KEY, posts);
 

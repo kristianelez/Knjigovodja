@@ -18,9 +18,10 @@ export interface BlogPostDB {
 const REDIS_KEY = "ens_posts";
 const DB_PATH = path.join(process.cwd(), "data", "posts-db.json");
 
-// Use Upstash Redis in production (when env vars are set), file-based locally
+// Use Upstash Redis in production (when Vercel env vars are set), file-based locally
+// Vercel Upstash for Redis integration provides KV_REST_API_URL + KV_REST_API_TOKEN
 const useRedis = !!(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+  process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN
 );
 
 // ─── File-based (local dev) ────────────────────────────────────────────────────
@@ -43,8 +44,8 @@ async function getRedis() {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { Redis } = require("@upstash/redis") as typeof import("@upstash/redis");
   return new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    url: process.env.KV_REST_API_URL!,
+    token: process.env.KV_REST_API_TOKEN!,
   });
 }
 
