@@ -17,7 +17,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const { id } = await context.params;
-  const post = getPost(id);
+  const post = await getPost(id);
   if (!post) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
@@ -37,7 +37,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const existing = getPost(id);
+  const existing = await getPost(id);
   if (!existing) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
@@ -48,7 +48,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
     id, // ensure id stays the same
   };
 
-  savePost(updated);
+  await savePost(updated);
   return NextResponse.json(updated);
 }
 
@@ -57,6 +57,6 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const { id } = await context.params;
-  deletePost(id);
+  await deletePost(id);
   return NextResponse.json({ ok: true });
 }

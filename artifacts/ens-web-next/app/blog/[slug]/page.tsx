@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, Clock, User, Calendar } from "lucide-react";
 import { getPosts } from "@/lib/posts.server";
 
+export const dynamic = "force-dynamic";
+
 const SITE_URL = "https://ens.ba";
 
 interface Props {
@@ -12,12 +14,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getPosts().map((post) => ({ slug: post.slug }));
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPosts().find((p) => p.slug === slug);
+  const posts = await getPosts();
+  const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
 
   return {
@@ -48,7 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getPosts().find((p) => p.slug === slug);
+  const posts = await getPosts();
+  const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
   const paragraphs = post.content.split("\n\n").filter((p) => p.trim() !== "");

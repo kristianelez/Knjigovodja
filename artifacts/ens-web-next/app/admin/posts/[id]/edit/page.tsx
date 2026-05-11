@@ -2,13 +2,15 @@ import { notFound } from "next/navigation";
 import { getPost } from "@/lib/posts.server";
 import PostForm from "@/components/admin/PostForm";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: Promise<{ id: string }>;
 }
 
 export default async function EditPostPage({ params }: Props) {
   const { id } = await params;
-  const post = getPost(id);
+  const post = await getPost(id);
 
   if (!post) {
     notFound();

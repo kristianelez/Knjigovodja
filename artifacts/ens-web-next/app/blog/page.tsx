@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
 import { getPosts } from "@/lib/posts.server";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog o računovodstvu i porezima u BiH | ENS d.o.o.",
   description: "Stručni savjeti o knjigovodstvu, porezima, obračunu plata i osnivanju firmi u BiH. Vodiči, zakoni i praktični primjeri od ENS d.o.o. Sarajevo.",
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://ens.ba/blog" },
 };
 
-export default function BlogPage() {
-  const posts = getPosts();
+export default async function BlogPage() {
+  const posts = await getPosts();
   return <BlogClient posts={posts} />;
 }

@@ -15,44 +15,91 @@ export interface BlogPostDB {
   focalPoint?: { x: number; y: number };
 }
 
+const REDIS_KEY = "ens_posts";
 const DB_PATH = path.join(process.cwd(), "data", "posts-db.json");
 
-function readDB(): BlogPostDB[] {
+// Use Upstash Redis in production (when env vars are set), file-based locally
+const useRedis = !!(
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+);
+
+// ─── File-based (local dev) ────────────────────────────────────────────────────
+
+function readFromFile(): BlogPostDB[] {
   try {
-    const raw = fs.readFileSync(DB_PATH, "utf-8");
-    return JSON.parse(raw) as BlogPostDB[];
+    return JSON.parse(fs.readFileSync(DB_PATH, "utf-8")) as BlogPostDB[];
   } catch {
     return [];
   }
 }
 
-function writeDB(posts: BlogPostDB[]): void {
+function writeToFile(posts: BlogPostDB[]): void {
   fs.writeFileSync(DB_PATH, JSON.stringify(posts, null, 2), "utf-8");
 }
 
-export function getPosts(): BlogPostDB[] {
-  return readDB();
+// ─── Redis-based (Vercel production) ──────────────────────────────────────────
+
+async function getRedis() {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Redis } = require("@upstash/redis") as typeof import("@upstash/redis");
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL!,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  });
 }
 
-export function getPost(id: string): BlogPostDB | undefined {
-  return readDB().find((p) => p.id === id);
+async function readFromRedis(): Promise<BlogPostDB[]> {
+  const redis = await getRedis();
+  const posts = (await redis.get(REDIS_KEY)) as BlogPostDB[] | null;
+  return posts ?? [];
 }
 
-export function savePost(post: BlogPostDB): BlogPostDB {
-  const posts = readDB();
+async function writeToRedis(posts: BlogPostDB[]): Promise<void> {
+  const redis = await getRedis();
+  await redis.set(REDIS_KEY, posts);
+}
+
+// ─── Public API ────────────────────────────────────────────────────────────────
+
+export async function getPosts(): Promise<BlogPostDB[]> {
+  return useRedis ? readFromRedis() : readFromFile();
+}
+
+export async function getPost(id: string): Promise<BlogPostDB | undefined> {
+  const posts = await getPosts();
+  return posts.find((p) => p.id === id);
+}
+
+export async function getPostBySlug(
+  slug: string
+): Promise<BlogPostDB | undefined> {
+  const posts = await getPosts();
+  return posts.find((p) => p.slug === slug);
+}
+
+export async function savePost(post: BlogPostDB): Promise<BlogPostDB> {
+  const posts = await getPosts();
   const idx = posts.findIndex((p) => p.id === post.id);
   if (idx >= 0) {
     posts[idx] = post;
   } else {
     posts.push(post);
   }
-  writeDB(posts);
+  if (useRedis) {
+    await writeToRedis(posts);
+  } else {
+    writeToFile(posts);
+  }
   return post;
 }
 
-export function deletePost(id: string): void {
-  const posts = readDB().filter((p) => p.id !== id);
-  writeDB(posts);
+export async function deletePost(id: string): Promise<void> {
+  const posts = (await getPosts()).filter((p) => p.id !== id);
+  if (useRedis) {
+    await writeToRedis(posts);
+  } else {
+    writeToFile(posts);
+  }
 }
 
 export function generateId(): string {

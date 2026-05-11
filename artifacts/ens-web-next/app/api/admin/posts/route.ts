@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   if (!isAuthed(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const posts = getPosts();
+  const posts = await getPosts();
   return NextResponse.json(posts);
 }
 
@@ -42,6 +42,6 @@ export async function POST(request: NextRequest) {
     ...(body.focalPoint ? { focalPoint: body.focalPoint } : {}),
   };
 
-  savePost(post);
+  await savePost(post);
   return NextResponse.json(post, { status: 201 });
 }

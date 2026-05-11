@@ -5,8 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getPosts } from "@/lib/posts.server";
 import PostsTable from "@/components/admin/PostsTable";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
-  const posts = getPosts();
+  const posts = await getPosts();
 
   return (
     <div className="p-6 md:p-8 max-w-6xl mx-auto">
