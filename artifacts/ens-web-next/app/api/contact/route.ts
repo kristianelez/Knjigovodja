@@ -13,16 +13,24 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
-    // Send email via Resend
-    if (process.env.RESEND_API_KEY) {
-      const { Resend } = await import("resend");
-      const resend = new Resend(process.env.RESEND_API_KEY);
+    if (process.env.ZOHO_SMTP_PASS) {
+      const nodemailer = await import("nodemailer");
 
-      await resend.emails.send({
-        from: "ENS Kontakt Forma <onboarding@resend.dev>",
-        to: ["info@ens.ba"],
+      const transporter = nodemailer.createTransport({
+        host: "smtp.zoho.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "info@ens.ba",
+          pass: process.env.ZOHO_SMTP_PASS,
+        },
+      });
+
+      await transporter.sendMail({
+        from: '"ENS Web Forma" <info@ens.ba>',
+        to: "info@ens.ba",
         replyTo: data.email,
-        subject: `Novi upit od ${data.ime} — ENS web stranica`,
+        subject: `Novi upit od ${data.ime} — ENS.ba`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #f9fafb; border-radius: 8px;">
             <div style="background: #c0392b; padding: 20px 24px; border-radius: 8px 8px 0 0;">
@@ -65,8 +73,7 @@ export async function POST(request: NextRequest) {
         `,
       });
     } else {
-      // Fallback: log to console in dev
-      console.log("📬 Kontakt forma (no RESEND_API_KEY):", data);
+      console.log("📬 Kontakt forma (no SMTP config):", data);
     }
 
     return NextResponse.json({ success: true });
