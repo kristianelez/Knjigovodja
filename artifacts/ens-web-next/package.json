@@ -12,7 +12,8 @@
     "@upstash/redis": "^1.34.9",
     "next": "^15.3.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "resend": "^4.5.1"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

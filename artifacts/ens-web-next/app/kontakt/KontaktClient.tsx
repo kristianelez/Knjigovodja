@@ -39,15 +39,22 @@ export default function KontaktClient() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
-    toast.success("Poruka uspješno poslana!", {
-      description: "Kontaktirat ćemo vas u najkraćem mogućem roku.",
-    });
-    form.reset();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) throw new Error("server error");
+      toast.success("Poruka uspješno poslana!", {
+        description: "Kontaktirat ćemo vas u najkraćem mogućem roku.",
+      });
+      form.reset();
+    } catch {
+      toast.error("Greška pri slanju poruke.", {
+        description: "Molimo pokušajte ponovo ili nas kontaktirajte telefonom.",
+      });
+    }
   }
 
   return (
