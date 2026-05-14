@@ -280,7 +280,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="relative aspect-[9/16] max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl bg-white">
+            <div className="relative w-full aspect-[9/16] max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl bg-white">
               <Image
                 src="/images/sedada.jpg"
                 alt="Sedada Ejupović — osnivačica ENS d.o.o., računovodstvene agencije u Sarajevu"
