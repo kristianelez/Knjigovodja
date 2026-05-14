@@ -280,15 +280,15 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-primary/10 z-10 mix-blend-multiply" />
+            <div className="relative aspect-[9/16] max-w-md mx-auto rounded-3xl overflow-hidden shadow-2xl bg-white">
               <Image
-                src="/images/hero.png"
-                alt="ENS d.o.o. tim"
+                src="/images/sedada.jpg"
+                alt="Sedada Ejupović — osnivačica ENS d.o.o., računovodstvene agencije u Sarajevu"
                 fill
-                className="object-cover object-left"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={80}
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 420px"
+                quality={85}
+                priority
               />
             </div>
           </div>
