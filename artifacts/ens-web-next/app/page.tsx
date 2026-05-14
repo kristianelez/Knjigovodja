@@ -422,8 +422,24 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Naše reference</h2>
             <p className="text-gray-600 text-lg">Povjerenje se gradi godinama. Ponosni smo na saradnju sa renomiranim kompanijama.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {([
+              {
+                name: "Rotometal Alati",
+                tag: "Industrija i alati",
+                logo: "/images/clients/rotometal.jpg",
+                href: "https://www.hoffmann-group.com/HR/hr/rotometal/hoffmann-group/locations-and-partners/rotometal/e/118618/",
+                anchor: "Industrija i alati",
+              },
+              {
+                name: "Rotometal ing",
+                tag: "Inženjering i mehanika",
+                logo: "/images/clients/rotometal-ing.svg",
+                href: "https://rotometal-ing.ba/",
+                anchor: "Inženjering i mehanika",
+                logoClass: "h-14 w-auto object-contain",
+                logoWidth: 260,
+              },
               {
                 name: "Greentime",
                 tag: "Agencija za čišćenje",
@@ -434,18 +450,29 @@ export default function Home() {
                 logoWidth: 340,
               },
               {
-                name: "Rotometal Alati",
-                tag: "Industrija i alati",
-                logo: "/images/clients/rotometal.jpg",
-                href: "https://www.hoffmann-group.com/HR/hr/rotometal/hoffmann-group/locations-and-partners/rotometal/e/118618/",
-                anchor: "Industrija i alati",
-              },
-              {
                 name: "Reform",
                 tag: "Građevinarstvo",
                 logo: "/images/clients/reform.png",
                 href: "https://www.reform.ba/",
                 anchor: "Građevinarstvo",
+              },
+              {
+                name: "SKS Auto",
+                tag: "Prodaja automobila",
+                logo: "/images/clients/sks-auto.png",
+                href: "#",
+                anchor: "Prodaja automobila Sarajevo",
+                logoClass: "h-32 w-auto object-contain",
+                logoWidth: 160,
+              },
+              {
+                name: "NS Group",
+                tag: "Rent a car",
+                logo: "/images/clients/ns-group.png",
+                href: "#",
+                anchor: "Rent a car Sarajevo",
+                logoClass: "h-20 w-auto object-contain",
+                logoWidth: 260,
               },
             ] as { name: string; tag: string; logo: string; href: string; anchor: string; logoClass?: string; logoWidth?: number }[]).map((client, i) => (
               <Card key={i} className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 bg-white">
