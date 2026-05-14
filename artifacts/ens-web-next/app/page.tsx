@@ -297,7 +297,7 @@ export default function Home() {
       </section>
 
       {/* O nama */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -336,9 +336,9 @@ export default function Home() {
       </section>
 
       {/* Usluge */}
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Naše usluge</h2>
             <p className="text-gray-600 text-lg">Sveobuhvatna finansijska podrška prilagođena potrebama vašeg preduzeća.</p>
           </div>
