@@ -532,6 +532,15 @@ export default function Home() {
                 logoClass: "h-16 w-auto object-contain",
                 logoWidth: 220,
               },
+              {
+                name: "Tinmen",
+                tag: "Limarija i bravarija",
+                logo: "/images/clients/tinmen.png",
+                href: "https://www.facebook.com/tinmensa/",
+                anchor: "Limarski radovi Sarajevo",
+                logoClass: "h-32 w-auto object-contain",
+                logoWidth: 130,
+              },
             ] as { name: string; tag: string; logo: string; href: string; anchor: string; logoClass?: string; logoWidth?: number }[]).map((client, i) => (
               <Card key={i} className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 bg-white">
                 <CardContent className="p-8 flex flex-col items-center justify-center text-center min-h-[200px] gap-5">
