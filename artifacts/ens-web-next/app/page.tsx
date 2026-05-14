@@ -85,7 +85,7 @@ const organizationJsonLd = {
   alternateName: "ENS računovodstvo i consulting d.o.o.",
   url: "https://ens.ba",
   logo: "https://ens.ba/logo.png",
-  image: "https://ens.ba/opengraph.jpg",
+  image: "https://ens.ba/opengraph-image",
   telephone: "+387 61 158 271",
   email: "info@ens.ba",
   address: {
