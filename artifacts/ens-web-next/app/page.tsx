@@ -514,6 +514,24 @@ export default function Home() {
                 logoClass: "h-20 w-auto object-contain",
                 logoWidth: 260,
               },
+              {
+                name: "Braytron BH",
+                tag: "Rasvjeta i LED",
+                logo: "/images/clients/braytron.svg",
+                href: "https://braytron.com/",
+                anchor: "LED rasvjeta",
+                logoClass: "h-12 w-auto object-contain",
+                logoWidth: 220,
+              },
+              {
+                name: "Aera",
+                tag: "Rasvjeta",
+                logo: "/images/clients/aera.png",
+                href: "https://aera.ba/",
+                anchor: "Rasvjeta Sarajevo",
+                logoClass: "h-16 w-auto object-contain",
+                logoWidth: 220,
+              },
             ] as { name: string; tag: string; logo: string; href: string; anchor: string; logoClass?: string; logoWidth?: number }[]).map((client, i) => (
               <Card key={i} className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 bg-white">
                 <CardContent className="p-8 flex flex-col items-center justify-center text-center min-h-[200px] gap-5">
