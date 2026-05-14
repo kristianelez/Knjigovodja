@@ -19,26 +19,66 @@ const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/vxCh9mS9mrztBLkC7";
 
 const reviews = [
   {
-    author: "Azra Dervišević",
+    author: "Suada Asceric",
     rating: 5,
-    date: "2026-05-13",
-    relativeDate: "prije 2 sata",
-    text: "Ukoliko tražite pravog stručnjaka u svom poslu sve preporuke za dragu Sedadu Ejupović. Vrhunski stručnjak u svom poslu.",
+    date: "2026-05-14",
+    relativeDate: "prije 6 sati",
+    text: "Prezadovoljna sam uslugom! Profesionalni, ljubazni i uvijek dostupni za sva pitanja. Sve obaveze završavaju tačno, brzo i bez greške, što mi daje veliko povjerenje i sigurnost. Posebno bih pohvalila ljubazan pristup, strpljenje i detaljna objašnjenja za sve što mi nije bilo jasno. Rijetko se danas može pronaći ovako pouzdano i odgovorno računovodstvo. Svaka preporuka za Ens d.o.o.!",
+    isLocalGuide: false,
+  },
+  {
+    author: "Adna Zunđa",
+    rating: 5,
+    date: "2026-05-14",
+    relativeDate: "prije 6 sati",
+    text: "Predivna saradnja ❤️ Uvijek ljubazni, strpljivi i spremni pomoći za sve što zatreba. Osjećaj sigurnosti i povjerenja koji pružaju danas je stvarno rijedak. Sve preporuke za ovu divnu firmu i gospođu Sedadu 😀",
     isLocalGuide: false,
   },
   {
     author: "NS Group Rent A Car",
     rating: 5,
     date: "2026-05-13",
-    relativeDate: "prije jedan sat",
+    relativeDate: "prije jedan dan",
     text: "Veoma profesionalna i pouzdana računovodstvena firma. Gospođa Sedada je izuzetno ljubazna, efikasna i uvijek spremna pomoći. Toplo preporučujem!",
+    isLocalGuide: false,
+  },
+  {
+    author: "Azmira Smajlović",
+    rating: 5,
+    date: "2026-05-14",
+    relativeDate: "prije 6 sati",
+    text: "Veoma profesionalna i pouzdana firma za računovodstvo i knjigovodstvo. Komunikacija je brza, sve obaveze završavaju tačno i na vrijeme. Ljubazno osoblje i odlična saradnja za svaku preporuku.",
+    isLocalGuide: false,
+  },
+  {
+    author: "Association Euro Connecta",
+    rating: 5,
+    date: "2026-05-14",
+    relativeDate: "prije sat vremena",
+    text: "Čestitke, usluge za 10-tku ✅",
+    isLocalGuide: false,
+  },
+  {
+    author: "Samra Bandić",
+    rating: 5,
+    date: "2026-05-14",
+    relativeDate: "prije 7 sati",
+    text: "Ako želite da imate osobe koje imaju rješenje za sve, to je ovo mjesto! Sve pohvale za Dadu i njen tim ❤️",
+    isLocalGuide: false,
+  },
+  {
+    author: "Azra Dervišević",
+    rating: 5,
+    date: "2026-05-13",
+    relativeDate: "prije jedan dan",
+    text: "Ukoliko tražite pravog stručnjaka u svom poslu sve preporuke za dragu Sedadu Ejupović. Vrhunski stručnjak u svom poslu.",
     isLocalGuide: false,
   },
   {
     author: "Armin Krzalić",
     rating: 5,
     date: "2026-05-13",
-    relativeDate: "prije jedan sat",
+    relativeDate: "prije jedan dan",
     text: "Preporuka za svakoga kome su važni tačnost, diskrecija i profesionalan pristup.",
     isLocalGuide: true,
   },
@@ -46,7 +86,7 @@ const reviews = [
     author: "Armin Hadžić",
     rating: 5,
     date: "2026-05-13",
-    relativeDate: "prije 34 minute",
+    relativeDate: "prije jedan dan",
     text: "Pouzdanost, visoka profesionalnost, tim koji ulijeva povjerenje svojim klijentima.",
     isLocalGuide: false,
   },
@@ -54,7 +94,7 @@ const reviews = [
     author: "Kenan Bandić",
     rating: 5,
     date: "2026-05-13",
-    relativeDate: "upravo sada",
+    relativeDate: "prije jedan dan",
     text: "Sve preporuke, godinama poslujem sa ovom firmom i nemam nikakvih zamjerki.",
     isLocalGuide: false,
   },
@@ -362,7 +402,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {reviews.map((review, i) => (
               <Card key={i} className="border border-gray-100 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden">
                 <CardContent className="p-6">
@@ -377,7 +417,7 @@ export default function Home() {
 
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-base shrink-0 ${
-                      ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-purple-500", "bg-amber-500"][i % 5]
+                      ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-purple-500", "bg-amber-500", "bg-teal-500", "bg-pink-500", "bg-indigo-500", "bg-orange-500", "bg-cyan-500"][i % 10]
                     }`}>
                       {review.author.charAt(0)}
                     </div>
