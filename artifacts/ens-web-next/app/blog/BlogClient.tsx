@@ -4,17 +4,47 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Clock } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
 import type { BlogPostDB } from "@/lib/posts.server";
 
 const ALL = "Sve teme";
+const POSTS_PER_PAGE = 6;
 
 export default function BlogClient({ posts }: { posts: BlogPostDB[] }) {
   const categories = Array.from(new Set(posts.map((post) => post.category)));
   const [activeCategory, setActiveCategory] = useState<string>(ALL);
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   const filteredPosts =
     activeCategory === ALL ? posts : posts.filter((p) => p.category === activeCategory);
+
+  const displayedPosts = filteredPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPosts.length;
+
+  // Reset visible count when category changes
+  useEffect(() => {
+    setVisibleCount(POSTS_PER_PAGE);
+  }, [activeCategory]);
+
+  // Auto-load on scroll near bottom (intersection observer)
+  useEffect(() => {
+    if (!hasMore) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((c) => c + POSTS_PER_PAGE);
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore, visibleCount]);
 
   return (
     <div className="pt-32 pb-24 bg-gray-50 min-h-screen">
@@ -48,7 +78,7 @@ export default function BlogClient({ posts }: { posts: BlogPostDB[] }) {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
+          {displayedPosts.map((post, index) => (
             <Card key={post.id} className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden bg-white flex flex-col group">
               <div className="relative h-56 overflow-hidden">
                 <div className="absolute top-4 left-4 z-10">
@@ -62,7 +92,9 @@ export default function BlogClient({ posts }: { posts: BlogPostDB[] }) {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={75}
+                  quality={70}
+                  loading={index < 3 ? "eager" : "lazy"}
+                  priority={index < 3}
                 />
               </div>
               <CardContent className="p-6 flex flex-col flex-grow">
@@ -84,6 +116,33 @@ export default function BlogClient({ posts }: { posts: BlogPostDB[] }) {
             </Card>
           ))}
         </div>
+
+        {/* Sentinel for auto-loading on scroll, and manual "Load More" button as fallback */}
+        {hasMore && (
+          <>
+            <div ref={sentinelRef} aria-hidden="true" className="h-1" />
+            <div className="mt-12 text-center">
+              <Button
+                onClick={() => setVisibleCount((c) => c + POSTS_PER_PAGE)}
+                size="lg"
+                variant="outline"
+                className="rounded-full h-12 px-8 border-gray-300 hover:bg-white"
+              >
+                Učitaj još
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <p className="text-sm text-gray-500 mt-4">
+                Prikazano {displayedPosts.length} od {filteredPosts.length} postova
+              </p>
+            </div>
+          </>
+        )}
+
+        {!hasMore && filteredPosts.length > POSTS_PER_PAGE && (
+          <p className="text-center text-sm text-gray-500 mt-12">
+            Prikazani su svi postovi ({filteredPosts.length})
+          </p>
+        )}
       </div>
     </div>
   );
