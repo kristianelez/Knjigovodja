@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Clock, User, Calendar } from "lucide-react";
 import { getPosts } from "@/lib/posts.server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 const SITE_URL = "https://ens.ba";
 

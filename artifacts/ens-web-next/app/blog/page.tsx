@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
 import { getPosts } from "@/lib/posts.server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog o računovodstvu i porezima u BiH | ENS d.o.o.",
