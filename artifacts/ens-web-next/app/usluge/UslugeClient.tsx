@@ -18,6 +18,13 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+const SERVICE_PAGE_MAP: Record<string, string> = {
+  "vodjenje-poslovnih-knjiga": "/knjigovodstvo",
+  "obracun-plata": "/obracun-plata",
+  "pdv-prijave": "/pdv-prijave",
+  "osnivanje-firme": "/osnivanje-firme",
+};
+
 const allServices = [
   {
     title: "Vođenje poslovnih knjiga",
@@ -145,6 +152,8 @@ const allServices = [
 
 function ServiceCard({ service }: { service: (typeof allServices)[0] }) {
   const [open, setOpen] = useState(false);
+  const landingPage = SERVICE_PAGE_MAP[service.slug];
+
   return (
     <Card className="h-full border-none shadow-md hover:shadow-xl transition-shadow duration-300 bg-white">
       <CardContent className="p-8">
@@ -156,14 +165,25 @@ function ServiceCard({ service }: { service: (typeof allServices)[0] }) {
         </div>
         <p className="text-gray-600 leading-relaxed pl-16 mb-4">{service.description}</p>
 
-        <button
-          onClick={() => setOpen((p) => !p)}
-          className="pl-16 flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
-          aria-expanded={open}
-        >
-          {open ? "Sakrij detalje" : "Šta je uključeno"}
-          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
-        </button>
+        <div className="pl-16 flex items-center gap-4 flex-wrap">
+          <button
+            onClick={() => setOpen((p) => !p)}
+            className="flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors"
+            aria-expanded={open}
+          >
+            {open ? "Sakrij detalje" : "Šta je uključeno"}
+            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+          </button>
+          {landingPage && (
+            <Link
+              href={landingPage}
+              className="flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-primary transition-colors"
+            >
+              Saznajte više
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          )}
+        </div>
 
         {open && (
           <ul className="mt-4 pl-16 space-y-2">

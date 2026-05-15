@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="bg-white text-gray-600 py-16 border-t border-gray-200" id="kontakt">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="space-y-4">
             <div className="mb-6">
               <Image
@@ -44,10 +44,20 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-gray-900 font-semibold mb-6">Brzi linkovi</h3>
+            <h3 className="text-gray-900 font-semibold mb-6">Usluge</h3>
+            <ul className="space-y-3">
+              <li><Link href="/knjigovodstvo" className="text-sm text-gray-500 hover:text-primary transition-colors">Knjigovodstvo</Link></li>
+              <li><Link href="/pdv-prijave" className="text-sm text-gray-500 hover:text-primary transition-colors">PDV prijave</Link></li>
+              <li><Link href="/obracun-plata" className="text-sm text-gray-500 hover:text-primary transition-colors">Obračun plata</Link></li>
+              <li><Link href="/osnivanje-firme" className="text-sm text-gray-500 hover:text-primary transition-colors">Osnivanje firme</Link></li>
+              <li><Link href="/usluge" className="text-sm text-gray-500 hover:text-primary transition-colors">Sve usluge</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-gray-900 font-semibold mb-6">Linkovi</h3>
             <ul className="space-y-3">
               <li><Link href="/" className="text-sm text-gray-500 hover:text-primary transition-colors">Početna</Link></li>
-              <li><Link href="/usluge" className="text-sm text-gray-500 hover:text-primary transition-colors">Usluge</Link></li>
               <li><Link href="/o-nama" className="text-sm text-gray-500 hover:text-primary transition-colors">O nama</Link></li>
               <li><Link href="/faq" className="text-sm text-gray-500 hover:text-primary transition-colors">FAQ</Link></li>
               <li><Link href="/blog" className="text-sm text-gray-500 hover:text-primary transition-colors">Blog</Link></li>
