@@ -11,6 +11,8 @@ import { useState, useEffect } from "react";
 const navLinks = [
   { name: "Početna", path: "/" },
   { name: "Usluge", path: "/usluge" },
+  { name: "O nama", path: "/o-nama" },
+  { name: "FAQ", path: "/faq" },
   { name: "Blog", path: "/blog" },
   { name: "Kontakt", path: "/kontakt" },
 ];
