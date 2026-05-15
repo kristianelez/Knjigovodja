@@ -89,8 +89,8 @@ const values = [
 
 const milestones = [
   { year: "2019.", label: "Osnivanje ENS d.o.o.", detail: "Sedada Ejupović osniva agenciju s jasnom misijom: pružiti malim preduzećima računovodstvo dostojanstva većih firmi." },
-  { year: "2016.", label: "50+ aktivnih klijenata", detail: "Organski rast temeljen isključivo na preporukama zadovoljnih klijenata — bez plaćenog marketinga." },
   { year: "2020.", label: "Digitalizacija procesa", detail: "Uvođenje elektronske fiskalizacije i cloud računovodstvenih alata za brži i preciznije vođenje knjiga." },
+  { year: "2022.", label: "50+ aktivnih klijenata", detail: "Organski rast temeljen isključivo na preporukama zadovoljnih klijenata — bez plaćenog marketinga." },
   { year: "2024.", label: "75+ klijenata i širenje tima", detail: "Uspješna ekspanzija na nova tržišta u Kantonu Sarajevo uz povećanje tima stručnih saradnika." },
 ];
 
