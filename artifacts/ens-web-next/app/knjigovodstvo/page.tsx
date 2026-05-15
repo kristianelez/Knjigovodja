@@ -221,6 +221,16 @@ export default function KnjigovodstvoPage() {
         </div>
       </section>
 
+      {/* Featured Snippet — Quick Answer */}
+      <section className="py-8 bg-amber-50 border-y border-amber-100">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">Brzi odgovor</p>
+          <p className="text-gray-800 leading-relaxed">
+            <strong>Šta uključuje usluga vođenja poslovnih knjiga?</strong> Vođenje poslovnih knjiga obuhvata: evidentiranje ulaznih i izlaznih faktura, blagajnu, obračun PDV-a, pripremu godišnjih finansijskih izvještaja (bilans stanja i bilans uspjeha) i predaju izvještaja FIA-i. ENS preuzima kompletnu administrativno-računovodstvenu funkciju za vaše preduzeće.
+          </p>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">

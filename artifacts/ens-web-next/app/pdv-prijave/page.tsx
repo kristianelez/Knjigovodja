@@ -223,6 +223,16 @@ export default function PdvPrijavePage() {
         </div>
       </section>
 
+      {/* Featured Snippet — Quick Answer */}
+      <section className="py-8 bg-amber-50 border-y border-amber-100">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">Brzi odgovor</p>
+          <p className="text-gray-800 leading-relaxed">
+            <strong>Ko je obavezan registrovati se za PDV u BiH?</strong> Svaki poslovni subjekt koji u 12 uzastopnih kalendarskih mjeseci ostvari promet veći od <strong>50.000 KM</strong> mora se registrovati za PDV kod Uprave za indirektno oporezivanje (UIO). Standardna stopa PDV-a iznosi <strong>17%</strong>. Dobrovoljna registracija dostupna je i za subjekte s manjim prometom.
+          </p>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">

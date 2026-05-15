@@ -222,6 +222,16 @@ export default function ObracunPlataPage() {
         </div>
       </section>
 
+      {/* Featured Snippet — Quick Answer */}
+      <section className="py-8 bg-amber-50 border-y border-amber-100">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">Brzi odgovor</p>
+          <p className="text-gray-800 leading-relaxed">
+            <strong>Kako se obračunava plaća u BiH (FBiH)?</strong> Bruto plaća = neto plaća + doprinosi zaposlenika (31%) + porez na dohodak. Poslodavac dodatno plaća 12% doprinosa na teret firme. Na bruto plaću od 1.500 KM, ukupni trošak poslodavca je ~1.680 KM, a neto plaća zaposlenika ~1.000–1.050 KM.
+          </p>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
