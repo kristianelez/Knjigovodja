@@ -231,6 +231,16 @@ export default function OsnivanjeFirePage() {
         </div>
       </section>
 
+      {/* Featured Snippet — Quick Answer */}
+      <section className="py-8 bg-amber-50 border-y border-amber-100">
+        <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-2">Brzi odgovor</p>
+          <p className="text-gray-800 leading-relaxed">
+            <strong>Kako osnovati d.o.o. u FBiH?</strong> Osnivanje d.o.o. uključuje: (1) pripremu osnivačke dokumentacije kod notara, (2) registraciju u Sudskom registru (5–15 dana), (3) dobivanje JIB-a od Porezne uprave, (4) otvaranje poslovnog računa. Ukupni troškovi: 1.500–3.000 KM. ENS vam pomaže u svakom koraku.
+          </p>
+        </div>
+      </section>
+
       {/* Koraci */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
