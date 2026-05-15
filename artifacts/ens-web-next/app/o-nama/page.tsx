@@ -88,7 +88,7 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2012.", label: "Osnivanje ENS d.o.o.", detail: "Sedada Ejupović osniva agenciju s jasnom misijom: pružiti malim preduzećima računovodstvo dostojanstva većih firmi." },
+  { year: "2019.", label: "Osnivanje ENS d.o.o.", detail: "Sedada Ejupović osniva agenciju s jasnom misijom: pružiti malim preduzećima računovodstvo dostojanstva većih firmi." },
   { year: "2016.", label: "50+ aktivnih klijenata", detail: "Organski rast temeljen isključivo na preporukama zadovoljnih klijenata — bez plaćenog marketinga." },
   { year: "2020.", label: "Digitalizacija procesa", detail: "Uvođenje elektronske fiskalizacije i cloud računovodstvenih alata za brži i preciznije vođenje knjiga." },
   { year: "2024.", label: "75+ klijenata i širenje tima", detail: "Uspješna ekspanzija na nova tržišta u Kantonu Sarajevo uz povećanje tima stručnih saradnika." },
@@ -162,7 +162,7 @@ export default function ONamaPage() {
           </h2>
           <div className="prose prose-gray max-w-none text-lg leading-relaxed space-y-6 text-gray-600">
             <p>
-              ENS d.o.o. je osnovana <strong>2012. godine</strong> u Sarajevu, u doba kada je
+              ENS d.o.o. je osnovana <strong>2019. godine</strong> u Sarajevu, u doba kada je
               digitalizacija u bosanskohercegovačkom računovodstvu bila u povojima. Osnivačica
               <strong> Sedada Ejupović</strong>, licencirana računovođa s višegodišnjim iskustvom
               u domaćim i međunarodnim kompanijama, prepoznala je jaz između onoga što mali
