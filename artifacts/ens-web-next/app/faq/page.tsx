@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Često Postavljana Pitanja o Računovodstvu u BiH | ENS d.o.o.",
+  title: "FAQ: Računovodstvo i PDV u BiH | ENS d.o.o. Sarajevo",
   description:
-    "Odgovori na najčešća pitanja o PDV-u u BiH, obračunu plata, osnivanju firme, računovodstvenim uslugama i porezima. ENS d.o.o. Sarajevo — vaš stručni vodič kroz BiH propise.",
+    "Odgovori na pitanja o PDV-u, obračunu plata i osnivanju firme u BiH. Stručni savjeti ENS d.o.o. Sarajevo — besplatna prva konsultacija za vaš biznis.",
   keywords: [
     "pitanja o PDV-u BiH",
     "kako osnovati firmu u BiH",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: "https://ens.ba/faq",
     type: "website",
-    title: "Često Postavljana Pitanja o Računovodstvu u BiH | ENS d.o.o.",
+    title: "FAQ: Računovodstvo i PDV u BiH | ENS d.o.o. Sarajevo",
     description:
       "Odgovori na pitanja o PDV-u, platama, osnivanju firme i računovodstvenim uslugama u BiH. Stručni odgovori ENS d.o.o. tima.",
   },
@@ -264,6 +264,10 @@ export default function FAQPage() {
           <div className="flex flex-wrap gap-4">
             {[
               { href: "/usluge", label: "Sve računovodstvene usluge" },
+              { href: "/knjigovodstvo", label: "Vođenje poslovnih knjiga" },
+              { href: "/pdv-prijave", label: "PDV prijave UIO" },
+              { href: "/obracun-plata", label: "Obračun plata i doprinosa" },
+              { href: "/osnivanje-firme", label: "Registracija d.o.o. i obrta" },
               { href: "/o-nama", label: "O ENS d.o.o." },
               { href: "/kontakt", label: "Kontakt i lokacija" },
               { href: "/blog", label: "Blog: savjeti za preduzetnike" },

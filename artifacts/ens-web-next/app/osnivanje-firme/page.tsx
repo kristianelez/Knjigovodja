@@ -13,14 +13,16 @@ import {
   ClipboardCheck,
   Clock,
   BadgeCheck,
+  BookOpen,
+  Calculator,
 } from "lucide-react";
 
 const SITE_URL = "https://ens.ba";
 
 export const metadata: Metadata = {
-  title: "Osnivanje Firme Sarajevo — Registracija d.o.o. i Obrta | ENS d.o.o.",
+  title: "Osnivanje Firme Sarajevo — Registracija d.o.o. | ENS d.o.o.",
   description:
-    "Brza i jednostavna registracija firme u Sarajevu. ENS d.o.o. vodi cijeli postupak osnivanja d.o.o. i obrta u FBiH — od dokumentacije do registracije. Besplatna konsultacija.",
+    "Registracija firme u Sarajevu uz stručnu podršku. ENS d.o.o. vodi cijeli postupak osnivanja d.o.o. i obrta u FBiH — od dokumentacije do registracije.",
   keywords: [
     "osnivanje firme Sarajevo",
     "registracija doo Sarajevo",
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/osnivanje-firme`,
     type: "website",
-    title: "Osnivanje Firme Sarajevo — Registracija d.o.o. i Obrta | ENS d.o.o.",
+    title: "Osnivanje Firme Sarajevo — Registracija d.o.o. | ENS d.o.o.",
     description:
       "Registracija firme i obrta u Sarajevu uz stručnu podršku ENS d.o.o. Brzo, jednostavno i bez grešaka. Besplatna konsultacija.",
   },
@@ -363,6 +365,30 @@ export default function OsnivanjeFirePage() {
                 <p className="text-gray-600 leading-relaxed">{item.acceptedAnswer.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ostale usluge — interni linkovi */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Pogledajte i ostale usluge ENS d.o.o.</h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Link href="/knjigovodstvo" className="block p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all group">
+              <BookOpen className="h-6 w-6 text-primary mb-3" />
+              <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">Knjigovodstvo</div>
+              <div className="text-sm text-gray-500 mt-1">Vođenje poslovnih knjiga za obrte i d.o.o.</div>
+            </Link>
+            <Link href="/pdv-prijave" className="block p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all group">
+              <FileText className="h-6 w-6 text-primary mb-3" />
+              <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">PDV prijave</div>
+              <div className="text-sm text-gray-500 mt-1">Izrada i predaja PDV prijava UIO</div>
+            </Link>
+            <Link href="/obracun-plata" className="block p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all group">
+              <Calculator className="h-6 w-6 text-primary mb-3" />
+              <div className="font-semibold text-gray-900 group-hover:text-primary transition-colors">Obračun plata</div>
+              <div className="text-sm text-gray-500 mt-1">Bruto/neto plate i doprinosi zaposlenika</div>
+            </Link>
           </div>
         </div>
       </section>

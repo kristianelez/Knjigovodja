@@ -16,9 +16,10 @@ export const metadata: Metadata = {
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "AccountingService",
+  "@type": ["AccountingService", "LocalBusiness"],
+  "@id": "https://ens.ba/#organization",
   name: "ENS d.o.o.",
-  url: "https://ens.ba/kontakt",
+  url: "https://ens.ba",
   telephone: "+387 61 158 271",
   email: "info@ens.ba",
   address: {
@@ -45,12 +46,25 @@ const localBusinessJsonLd = {
   },
 };
 
+const contactPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Kontakt — ENS d.o.o.",
+  url: "https://ens.ba/kontakt",
+  description: "Kontaktirajte ENS d.o.o. računovodstvenu agenciju u Sarajevu. Telefon: +387 61 158 271, Email: info@ens.ba.",
+  mainEntity: { "@id": "https://ens.ba/#organization" },
+};
+
 export default function KontaktPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
       />
       <KontaktClient />
     </>
