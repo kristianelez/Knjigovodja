@@ -6,9 +6,16 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/admin/", "/api/", "/_next/", "/static/"],
+      },
+      {
+        // Allow AI crawlers for brand visibility
+        userAgent: ["GPTBot", "Anthropic-ai", "ClaudeBot", "PerplexityBot"],
+        allow: "/",
         disallow: ["/admin/", "/api/"],
       },
     ],
     sitemap: "https://ens.ba/sitemap.xml",
+    host: "https://ens.ba",
   };
 }
