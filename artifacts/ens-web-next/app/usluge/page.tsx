@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import UslugeClient from "./UslugeClient";
 
 export const metadata: Metadata = {
-  title: "Računovodstvene i Knjigovodstvene Usluge Sarajevo | ENS d.o.o.",
+  title: "Računovodstvene Usluge Sarajevo — Knjigovodstvo | ENS d.o.o.",
   description:
-    "Kompletne računovodstvene usluge u Sarajevu: vođenje poslovnih knjiga, obračun plata, PDV prijave UIO, porezno savjetovanje, osnivanje d.o.o. i obrta, finansijski izvještaji. ENS d.o.o. — vaš partner od 2012.",
+    "Vođenje poslovnih knjiga, obračun plata, PDV prijave, porezno savjetovanje i osnivanje d.o.o. ENS d.o.o. Sarajevo — 12+ godina iskustva, 75+ klijenata.",
   keywords: [
     "računovodstvene usluge Sarajevo",
     "vođenje poslovnih knjiga Sarajevo",
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   openGraph: {
     url: "https://ens.ba/usluge",
     type: "website",
-    title: "Računovodstvene i Knjigovodstvene Usluge Sarajevo | ENS d.o.o.",
+    title: "Računovodstvene Usluge Sarajevo — Knjigovodstvo | ENS d.o.o.",
     description:
-      "Kompletne računovodstvene usluge u Sarajevu: vođenje knjiga, obračun plata, PDV, osnivanje firmi. ENS d.o.o. — 12+ godina iskustva, 75+ klijenata.",
+      "Vođenje poslovnih knjiga, obračun plata, PDV prijave, porezno savjetovanje i osnivanje d.o.o. ENS d.o.o. Sarajevo — 12+ godina iskustva, 75+ klijenata.",
   },
   alternates: { canonical: "https://ens.ba/usluge" },
 };

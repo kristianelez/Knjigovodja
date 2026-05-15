@@ -121,11 +121,14 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["AccountingService", "LocalBusiness"],
+  "@id": "https://ens.ba/#organization",
   name: "ENS d.o.o.",
+  legalName: "ENS računovodstvo i consulting d.o.o.",
   alternateName: "ENS računovodstvo i consulting d.o.o.",
   url: "https://ens.ba",
   logo: "https://ens.ba/logo.png",
   image: "https://ens.ba/opengraph-image",
+  foundingDate: "2012",
   telephone: "+387 61 158 271",
   email: "info@ens.ba",
   address: {
@@ -160,7 +163,11 @@ const organizationJsonLd = {
   paymentAccepted: "Cash, Bank Transfer",
   description:
     "Profesionalna računovodstvena i knjigovodstvena agencija u Sarajevu. Vođenje poslovnih knjiga, obračun plata, PDV, porezno savjetovanje i osnivanje firmi u FBiH.",
-  sameAs: ["https://ens.ba"],
+  sameAs: [
+    "https://ens.ba",
+    "https://maps.app.goo.gl/vxCh9mS9mrztBLkC7",
+    "https://www.google.com/maps?cid=ENS+d.o.o.+Sarajevo",
+  ],
   serviceArea: {
     "@type": "GeoCircle",
     geoMidpoint: { "@type": "GeoCoordinates", latitude: 43.8476, longitude: 18.3564 },
@@ -603,6 +610,11 @@ export default function Home() {
                 <p className="text-gray-600 leading-relaxed">{a}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link href="/faq" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+              Pogledajte sva pitanja i odgovore <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

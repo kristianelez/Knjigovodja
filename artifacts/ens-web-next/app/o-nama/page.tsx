@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "O nama — ENS d.o.o. | Računovodstvena agencija Sarajevo",
   description:
-    "ENS d.o.o. je iskusna računovodstvena agencija u Sarajevu. Saznajte ko smo, šta nas pokreće i zašto nam više od 75 preduzetnika u BiH vjeruje vođenje svojih finansija.",
+    "ENS d.o.o. — iskusna računovodstvena agencija u Sarajevu. Saznajte ko smo, šta nas pokreće i zašto nam 75+ preduzetnika u BiH vjeruje vođenje finansija.",
   keywords: [
     "o nama ENS računovodstvo",
     "računovodstvena agencija Sarajevo",
