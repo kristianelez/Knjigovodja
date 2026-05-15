@@ -61,6 +61,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="bs" className={inter.variable}>
+      <head>
+        {/* Preconnect to Google for Maps embed and reviews */}
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://maps.app.goo.gl" />
+      </head>
       <body>
         <Providers>
           <div className="flex flex-col min-h-screen">
