@@ -58,6 +58,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   const paragraphs = post.content.split("\n\n").filter((p) => p.trim() !== "");
 
+  const relatedPosts = posts
+    .filter((p) => p.slug !== slug && p.category === post.category)
+    .slice(0, 3)
+    .concat(
+      posts
+        .filter((p) => p.slug !== slug && p.category !== post.category)
+        .slice(0, Math.max(0, 3 - posts.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3).length))
+    )
+    .slice(0, 3);
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -179,6 +189,26 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {relatedPosts.length > 0 && (
+          <div className="bg-gray-50 rounded-b-3xl border-b border-x border-gray-100 p-8 md:p-12">
+            <h2 className="text-xl font-bold text-gray-900 mb-6">Pročitajte i ove članke</h2>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {relatedPosts.map((rp) => (
+                <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                  <div className="relative h-32 w-full">
+                    <img src={rp.image} alt={rp.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wide">{rp.category}</span>
+                    <p className="mt-1 text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-primary transition-colors">{rp.title}</p>
+                    <p className="mt-1 text-xs text-gray-500">{rp.readTime}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
   );
