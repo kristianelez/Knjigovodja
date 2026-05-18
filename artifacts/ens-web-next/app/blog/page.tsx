@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogClient from "./BlogClient";
 import { getPosts } from "@/lib/posts.server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Blog o računovodstvu i porezima u BiH | ENS d.o.o.",
@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     type: "website",
     title: "Blog o računovodstvu i porezima u BiH | ENS d.o.o.",
     description: "Stručni savjeti o knjigovodstvu, porezima i osnivanju firmi u BiH. Vodiči i praktični primjeri od ENS d.o.o. Sarajevo.",
+    images: [{ url: "https://ens.ba/opengraph.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog o računovodstvu i porezima u BiH | ENS d.o.o.",
+    description: "Stručni savjeti o knjigovodstvu, porezima i osnivanju firmi u BiH.",
   },
   alternates: { canonical: "https://ens.ba/blog" },
 };

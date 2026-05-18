@@ -14,6 +14,19 @@ import type { BlogPostDB } from "@/lib/posts.server";
 
 const CATEGORIES = ["Porezi", "Plate", "Pravo", "Savjeti", "Knjigovodstvo"];
 
+const BS_MONTHS: Record<string, number> = {
+  Januar: 1, Februar: 2, Mart: 3, April: 4, Maj: 5, Juni: 6,
+  Juli: 7, August: 8, Septembar: 9, Oktobar: 10, Novembar: 11, Decembar: 12,
+};
+
+function parseDateBs(dateStr: string): Date | null {
+  const m = dateStr.match(/(\d{1,2})\.\s+(\w+)\s+(\d{4})/);
+  if (!m) return null;
+  const month = BS_MONTHS[m[2]];
+  if (!month) return null;
+  return new Date(Number(m[3]), month - 1, Number(m[1]));
+}
+
 function generateSlug(title: string): string {
   return title
     .toLowerCase()
@@ -47,6 +60,11 @@ export default function PostForm({ post }: PostFormProps) {
   const [focalPoint, setFocalPoint] = useState<{ x: number; y: number } | undefined>(
     post?.focalPoint
   );
+  const [metaTitle, setMetaTitle] = useState((post as any)?.metaTitle ?? "");
+  const [metaDescription, setMetaDescription] = useState((post as any)?.metaDescription ?? "");
+  const [tags, setTags] = useState((post as any)?.tags ?? "");
+
+  const today = new Date().toISOString().split("T")[0];
 
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -96,11 +114,21 @@ export default function PostForm({ post }: PostFormProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+
+    // Validate: no future dates allowed
+    if (date) {
+      const parsed = parseDateBs(date);
+      if (parsed && parsed > new Date()) {
+        setError("Datum ne može biti u budućnosti. Maksimalni dozvoljeni datum je danas.");
+        return;
+      }
+    }
+
     setSaving(true);
 
     const finalCategory = useCustomCategory ? customCategory || category : category;
 
-    const payload: Partial<BlogPostDB> = {
+    const payload: Partial<BlogPostDB> & { metaTitle?: string; metaDescription?: string; tags?: string } = {
       title,
       slug,
       category: finalCategory,
@@ -111,6 +139,9 @@ export default function PostForm({ post }: PostFormProps) {
       image,
       content,
       ...(focalPoint ? { focalPoint } : {}),
+      ...(metaTitle ? { metaTitle } : {}),
+      ...(metaDescription ? { metaDescription } : {}),
+      ...(tags ? { tags } : {}),
     };
 
     try {
@@ -231,14 +262,20 @@ export default function PostForm({ post }: PostFormProps) {
             {/* Date */}
             <div className="space-y-1.5">
               <Label htmlFor="date" className="font-medium">
-                Datum
+                Datum <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="npr. 15. Januar 2026."
+                placeholder="npr. 15. Maj 2026."
               />
+              {date && parseDateBs(date) && parseDateBs(date)! > new Date() && (
+                <p className="text-xs text-red-600 font-medium">
+                  ⚠️ Datum je u budućnosti — nije dozvoljeno.
+                </p>
+              )}
+              <p className="text-xs text-gray-400">Format: 15. Maj 2026. — maksimalni datum je danas.</p>
             </div>
 
             {/* Read time */}
@@ -354,6 +391,54 @@ export default function PostForm({ post }: PostFormProps) {
               className="font-mono text-sm leading-relaxed"
             />
             <p className="text-xs text-gray-400">Odvojite paragrafe praznim redom</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* SEO POLJA */}
+      <Card className="border border-gray-200 shadow-sm">
+        <CardContent className="pt-6 space-y-5">
+          <h2 className="text-base font-semibold text-gray-800 border-b pb-2">SEO postavke</h2>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="metaTitle" className="font-medium">
+              Meta naslov
+            </Label>
+            <Input
+              id="metaTitle"
+              value={metaTitle}
+              onChange={(e) => setMetaTitle(e.target.value)}
+              placeholder="SEO naslov (ostavite prazno za korištenje naslova posta)"
+              maxLength={70}
+            />
+            <p className="text-xs text-gray-400">{metaTitle.length}/70 znakova</p>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="metaDescription" className="font-medium">
+              Meta opis
+            </Label>
+            <Textarea
+              id="metaDescription"
+              value={metaDescription}
+              onChange={(e) => setMetaDescription(e.target.value)}
+              placeholder="SEO opis (ostavite prazno za korištenje excerpta)"
+              rows={3}
+              maxLength={160}
+            />
+            <p className="text-xs text-gray-400">{metaDescription.length}/160 znakova</p>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="tags" className="font-medium">
+              Tagovi
+            </Label>
+            <Input
+              id="tags"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+              placeholder="npr. porezi, PDV, osnivanje firme (odvojite zarezom)"
+            />
           </div>
         </CardContent>
       </Card>
